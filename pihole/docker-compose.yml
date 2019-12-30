@@ -2,10 +2,6 @@ version: "3"
 
 # More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
 services:
-  pihole:
-    networks:
-      pitornetwork:
-        external: true
     container_name: pihole
     image: pihole/pihole:latest
     ports:
@@ -28,3 +24,7 @@ services:
     # cap_add:
     #  - NET_ADMIN
     restart: unless-stopped
+networks:
+  default:
+    external:
+     name: pitornetwork

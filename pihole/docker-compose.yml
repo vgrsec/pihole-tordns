@@ -4,7 +4,8 @@ version: "3"
 services:
   pihole:
     networks:
-      - pitornetwork
+      pitornetwork:
+        external: true
     container_name: pihole
     image: pihole/pihole:latest
     ports:

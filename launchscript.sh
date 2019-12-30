@@ -52,9 +52,10 @@ sudo sed -i -e '$ a\DNSStubListener=no' /etc/systemd/resolved.conf
 sudo systemctl daemon-reload
 sudo systemctl restart systemd-resolved.service
 
-sudo vim /etc/systemd/resolved.conf
-
 # https://github.com/hsaito/docker-torbox
+
+cd pihole
+sudo docker-compose up  --force-recreate --detach
 
 docker run --name dnstor -d -p 6379:6379 redis --network pitornetwork
 docker run -d --restart=always --name tor-socks-proxy -p 127.0.0.1:9150:9150 peterdavehello/tor-socks-proxy:latest --network pitornetwork

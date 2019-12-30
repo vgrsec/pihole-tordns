@@ -8,13 +8,14 @@
 
 # Install Docker https://docs.docker.com/install/linux/docker-ce/ubuntu/
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y 
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
-    software-properties-common
+    software-properties-common \
+    -y 
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
@@ -24,7 +25,11 @@ sudo add-apt-repository \
    stable"
 
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install \
+	docker-ce \
+	docker-ce-cli \
+	containerd.io \
+	-y
 
 sudo docker run hello-world
 
@@ -33,9 +38,11 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
+# Create the Pi-Tor-DNS Docker Network
 sudo docker network create pitornetwork
-git clone https://github.com/piskyscan/dns_over_tls_over_tor.git
-git clone https://github.com/PeterDaveHello/tor-socks-proxy.git
+
+# git clone https://github.com/piskyscan/dns_over_tls_over_tor.git
+# git clone https://github.com/PeterDaveHello/tor-socks-proxy.git
 
 #Bug in Dockerfile
 sed -i -e 's/libyaml-dev/apt-utils\ libyaml-dev/g' ./dns_over_tls_over_tor/Dockerfile

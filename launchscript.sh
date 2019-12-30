@@ -44,9 +44,15 @@ sudo docker network create pitornetwork
 # git clone https://github.com/piskyscan/dns_over_tls_over_tor.git
 # git clone https://github.com/PeterDaveHello/tor-socks-proxy.git
 
-#Bug in Dockerfile
+# Bug in Dockerfile
 sed -i -e 's/libyaml-dev/apt-utils\ libyaml-dev/g' ./dns_over_tls_over_tor/Dockerfile
 
+# Stop Ubuntu 18.04 from listening on 53
+sudo sed -i -e '$ a\DNSStubListener=no' /etc/systemd/resolved.conf
+sudo systemctl daemon-reload
+sudo systemctl restart systemd-resolved.service
+
+sudo vim /etc/systemd/resolved.conf
 
 # https://github.com/hsaito/docker-torbox
 

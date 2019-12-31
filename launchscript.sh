@@ -48,6 +48,7 @@ sudo docker network create pitornetwork
 sed -i -e 's/libyaml-dev/apt-utils\ libyaml-dev/g' ./dns_over_tls_over_tor/Dockerfile
 
 # Stop Ubuntu 18.04 from listening on 53
+sudo sed -i -e 's/127.0.0.53/127.0.0.1/g' /etc/resolv.conf
 sudo sed -i -e '$ a\DNSStubListener=no' /etc/systemd/resolved.conf
 sudo systemctl daemon-reload
 sudo systemctl restart systemd-resolved.service
@@ -55,7 +56,14 @@ sudo systemctl restart systemd-resolved.service
 # https://github.com/hsaito/docker-torbox
 
 cd pihole
-sudo docker-compose up  --force-recreate --detach
+# sudo docker-compose up  --force-recreate --detach
+cd ..
+cd tor-socks-proxy 
+sudo docker build --no-cache -t tor-socks-proxy .
+# sudo docker run --name tor --network pitornetwork --ip 172.18.0.21 -d tor:latest
+cd ..
+cd dns_over_tls_over_tor 
+sudo docker build --no-cache -t dns_over_tls_over_tor .
+# sudo docker run --name tordns --network pitornetwork --ip 172.18.0.22 -d dns_over_tls_over_tor:latest
 
-docker run --name dnstor -d -p 6379:6379 redis --network pitornetwork
-docker run -d --restart=always --name tor-socks-proxy -p 127.0.0.1:9150:9150 peterdavehello/tor-socks-proxy:latest --network pitornetwork
+

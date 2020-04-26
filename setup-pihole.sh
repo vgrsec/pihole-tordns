@@ -42,12 +42,12 @@ CONDITIONAL_FORWARDING=false
 EOF
 
 sed -i -E "s/ //g" setupVars.conf
+mkdir /etc/pihole
 mv ./setupVars.conf /etc/pihole/setupVars.conf
 
 # Download and Install PiHole
 
 wget -O basic-install.sh https://install.pi-hole.net
 chmod +x ./basic-install.sh
-mkdir /etc/pihole
 
 ./basic-install.sh --unattended

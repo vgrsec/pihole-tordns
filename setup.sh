@@ -26,8 +26,8 @@ apt-get upgrade -y
 # a clean install of Ubuntu 20.04
 
 PIHOLE="./setup-pihole.sh"
-./ "$PIHOLE"
+. "$PIHOLE"
 
 TORDNS="./setup-tor-dns.sh"
-./ "$TORNDS"
+. "$TORNDS"
 

@@ -27,7 +27,3 @@ apt-get upgrade -y
 
 PIHOLE="./setup-pihole.sh"
 . "$PIHOLE"
-
-TORDNS="./setup-tor-dns.sh"
-. "$TORDNS"
-

@@ -8,8 +8,7 @@
 #
 # 20200426 - Wrote Script
 
-# Install DNSCrypt-Proxy & TOR
-apt-get install tor -y 
+# Install DNSCrypt-Proxy
 apt-get install dnscrypt-proxy -y
 
 # Copy Socket File
@@ -17,7 +16,7 @@ apt-get install dnscrypt-proxy -y
 cp ./dnscrypt-configs/dnscrypt-proxy.socket  /etc/systemd/system/sockets.target.wants/dnscrypt-proxy.socket
 
 # Copy dnscrypt config
-cp ./dnscrypt-configs/dnscrypt-proxy.toml  /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+cp ./dnscrypt-configs/zzz_dnscrypt-proxy.toml  /etc/dnscrypt-proxy/dnscrypt-proxy.toml
 
 # Reload SystemD because existence is pain 
 systemctl daemon-reload

@@ -1,0 +1,78 @@
+# Empty listen_addresses to use systemd socket activation
+listen_addresses = ['127.0.0.1:8053']
+server_names = ['cleanbrowsing']
+
+## For DNS over TOR
+proxy = 'socks5://127.0.0.1:9050'
+force_tcp = true
+
+## DoH: Disable TLS session tickets - increases privacy but also latency
+tls_disable_session_tickets = true
+
+## DoH: Use a specific cipher suite instead of the server preference
+## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+## 49195 = TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+## 52392 = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+## 52393 = TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+##  4865 = TLS_AES_128_GCM_SHA256
+##  4867 = TLS_CHACHA20_POLY1305_SHA256
+##
+## On non-Intel CPUs such as MIPS routers and ARM systems (Android, Raspberry Pi...),
+## the following suite improves performance.
+## This may also help on Intel CPUs running 32-bit operating systems.
+##
+## Keep tls_cipher_suite empty if you have issues fetching sources or
+## connecting to some DoH servers. Google and Cloudflare are fine with it.
+## https://ciphersuite.info/cs/?singlepage=true
+
+tls_cipher_suite = [49199, 49195, 52392, 52393, 4865, 4867]
+
+ignore_system_dns = true
+
+## Maximum time (in seconds) to wait for network connectivity before
+## initializing the proxy.
+## Useful if the proxy is automatically started at boot, and network
+## connectivity is not guaranteed to be immediately available.
+## Use 0 to not test for connectivity at all (not recommended),
+## and -1 to wait as much as possible.
+netprobe_timeout = 600
+
+
+## Enable a DNS cache to reduce latency and outgoing traffic
+cache = true
+## Cache size
+cache_size = 4096
+## Minimum TTL for cached entries
+cache_min_ttl = 2400
+
+
+## Maximum TTL for cached entries
+cache_max_ttl = 604800
+
+
+## Minimum TTL for negatively cached entries
+cache_neg_min_ttl = 60
+
+
+## Maximum TTL for negatively cached entries
+cache_neg_max_ttl = 600
+
+
+[query_log]
+  file = '/var/log/dnscrypt-proxy/query.log'
+
+[nx_log]
+  file = '/var/log/dnscrypt-proxy/nx.log'
+
+#[sources]
+#  [sources.'public-resolvers']
+#  url = 'https://download.dnscrypt.info/resolvers-list/v2/public-resolvers.md'
+#  cache_file = '/var/cache/dnscrypt-proxy/public-resolvers.md'
+#  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+#  refresh_delay = 72
+#  prefix = ''
+
+[static]
+
+  [static.'cleanbrowsing']
+  stamp = 'sdns://AQMAAAAAAAAAEjE4NS4yMjguMTY4Ljk6ODQ0MyC8rDL61UNpFx8IMtYHUCfDIIzu8Ojpn5QY3HdgZdSPKRFjbGVhbmJyb3dzaW5nLm9yZw'

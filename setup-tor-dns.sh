@@ -26,6 +26,5 @@ systemctl restart dnscrypt-proxy
 # Replace DNS with DNSCrypt
 sed -i -E "s/PIHOLE_DNS_1=9.9.9.9/PIHOLE_DNS_1=127.0.0.1#8053/g" /etc/pihole/setupVars.conf
 
-# Restart pihole service
-systemctl restart pihole-FTL
-phile restartdns
+# Restart pihole service with new configuration
+./basic-install.sh --unattended

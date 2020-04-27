@@ -2,6 +2,8 @@
 
 AdBlock, Encryption, Anonymous
 
+![DNS-Pihole-DoH-TOR](https://raw.githubusercontent.com/vgrsec/pihole-tordns/assets/dns-pihole-doh-tor.png)
+
 ## Overview
 
 The goal of this project is to improve my house's DNS capabilities and to reduce my personal data emissions.
@@ -47,9 +49,13 @@ Query a site you've never been to. If you've been to boogieblocks before today, 
 
 This script will one click setup Pi-hole clean. I used this to test packet capture DNS in the clear.
 
+![DNS-Pihole](https://raw.githubusercontent.com/vgrsec/pihole-tordns/assets/dns-pihole.png)
+
 ### zzz_setup-test-doh.sh
 
 This script will one click setup Pi-hole and DNSCrypt-Proxy. I used this to test packet capture DNS over HTTPS.
+
+![DNS-Pihole-DoH](https://raw.githubusercontent.com/vgrsec/pihole-tordns/assets/dns-pihole-doh.png)
 
 ## Thanks & Additional Resources
 

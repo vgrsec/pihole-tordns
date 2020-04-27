@@ -28,3 +28,4 @@ sed -i -E "s/PIHOLE_DNS_1=9.9.9.9/PIHOLE_DNS_1=127.0.0.1#8053/g" /etc/pihole/set
 
 # Restart pihole service
 systemctl restart pihole-FTL
+phile restartdns

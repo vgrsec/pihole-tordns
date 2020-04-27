@@ -30,7 +30,7 @@ https://gitweb.torproject.org/tor.git
 
 ## Setup
 
-For a full description of how this all works, and videos of packet capture proving it works, check out www.vgrsec.com/blog20200426.html
+For a full description of how this all works, and videos of packet capture proving it works, check out www.vgrsec.com/post20200426.html
 
 All of the worker scripts are documented, as is the DNSCrypt config file.
 

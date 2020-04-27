@@ -39,6 +39,8 @@ This script is your click next to success. Git clone this repo, run this script,
 
 ## Tests
 
+Query a site you've never been to. If you've been to boogieblocks before today, I want to talk to you about an INTERNET before time :D
+
 `dig boogieblocks.com`
 
 ### zzz_setup-test-pihole.sh
@@ -53,9 +55,9 @@ This script will one click setup Pi-hole and DNSCrypt-Proxy. I used this to test
 
 These resources helped me along the way
 
-https://blog.sean-wright.com/dns-with-pi-hole-dnscrypt/
-https://github.com/piskyscan/dns_over_tls_over_tor/blob/master/README.md
-https://github.com/pi-hole/pi-hole/wiki/DNSCrypt-2.0
-https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
-https://github.com/DNSCrypt/dnscrypt-proxy/wiki/DNS-server-sources
-https://dnscrypt.info/public-servers
+* https://blog.sean-wright.com/dns-with-pi-hole-dnscrypt/
+* https://github.com/piskyscan/dns_over_tls_over_tor/blob/master/README.md
+* https://github.com/pi-hole/pi-hole/wiki/DNSCrypt-2.0
+* https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
+* https://github.com/DNSCrypt/dnscrypt-proxy/wiki/DNS-server-sources
+* https://dnscrypt.info/public-servers
